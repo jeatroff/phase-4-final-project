@@ -5,8 +5,8 @@ function Movie({image, name, id, user}) {
     const user_movie_id = Math.floor(Math.random() * 100000) + 1
 
     function handleClick(e) {
-        setisClicked(!isClicked);
-
+        if(!isClicked) {
+            setisClicked(!isClicked);
             let user_movie = {
                 id: user_movie_id,
                 user_id: user.id,
@@ -26,11 +26,12 @@ function Movie({image, name, id, user}) {
                     res.json().then(console.log)
                 }
             })
+        }
     }
     return (
         <div>
             <img src={image} height={300} onClick={handleClick}/>
-            <p>{name}</p>
+            {isClicked ? <p style={{color:"red"}}>{name}</p> : <p>{name}</p>}
         </div>
     );
 }
