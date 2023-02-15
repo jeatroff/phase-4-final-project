@@ -1,15 +1,12 @@
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { Link } from 'react-router-dom'
-import Signup from './Signup'
-
 
 function Login({setUser}){
-
     const [username, SetUsername] = useState("")
-    const [password, SetPassword] = useState("")
+    const [password_digest, SetPassword] = useState("")
     const [errors, setErrors] = useState([])
-    const history = useNavigate()
+    const navigate = useNavigate()
 
     function handleUsernameChange(e){
         SetUsername(e.target.value)
@@ -22,30 +19,26 @@ function Login({setUser}){
     function onSubmit(e){
         e.preventDefault()
         const new_user = {
-        username,
-        password
-    }
-    // Logs in user
-    fetch(`/login`,{
-      method:'POST',
-      headers:{'Content-Type': 'application/json'},
-      body:JSON.stringify(new_user)
-    })
-    .then(res => {
-        if(res.ok){
-            res.json().then(new_user => {
-                setUser(new_user)
-                history.push("/")
-            })
-        }else {
-            res.json().then(json => setErrors(json.errors))
+        username: username,
+        password_digest: password_digest
         }
-    })
-    history.push(`/`)
-}
-   
-
-   
+        // Logs in user
+        fetch(`/login`,{
+        method:'POST',
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify(new_user)
+        })
+        .then(res => {
+            if(res.ok) {
+                res.json().then(user => {
+                    setUser(user)
+                    navigate("/")
+                })
+            } else {
+                res.json().then(json => setErrors(json.errors))
+            }
+        })
+    }
 
     return(
         <div className="form">
@@ -53,16 +46,13 @@ function Login({setUser}){
             <form onSubmit={onSubmit}>
                 <input placeholder="Username"type='text' name='username' value={username} onChange={(e) => handleUsernameChange(e)} />
                 <div></div>
-                <input placeholder="Password" type='password' name='password' value={password} onChange={(e) => handlePasswordChange(e)} />
-        
+                <input placeholder="Password" type='password' name='password' value={password_digest} onChange={(e) => handlePasswordChange(e)} />
                 <div></div>
-                <input type='submit' value='Log in!' />
+                <input type='submit' value='Log In' />
             </form>
-            <h3>Don't have an account yet? Sign up!</h3>
-            <Link exact to="/signup">Sign up now!</Link>
-    </div>
+            <h3>Don't have an account yet?</h3>
+            <Link exact="true" to="/signup">Sign up now!</Link>
+        </div>
     )
 }
-
-
 export default Login;

@@ -27,7 +27,7 @@ function App() {
         <h1>Movie Matcher</h1>
         <NavBar user={user} setUser={setUser}/>
         <Routes>
-          <Route exact path="/" element={<Home />}/>
+          <Route exact path="/" element={<Home user={user}/>}/>
           <Route exact path="/matches" element={<Matches setUser={setUser} user={user}/>}/>
           <Route exact path="/discover" element={<Discover setUser={setUser} user={user}/>}/>
           <Route exact path="/profile" element={<Profile setUser={setUser} user={user}/>}/>
