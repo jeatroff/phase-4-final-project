@@ -23,15 +23,13 @@ function NavBar({ setUser, user }) {
       <button onClick={handleLogoutClick}>Logout</button>
     </nav> ) :
     (<nav>
-        <NavLink exact to="/">
-            Home
-        </NavLink>
-        <NavLink exact to="/login">
-            Log In
-        </NavLink>
-        <NavLink exact to="/signup">
-            Sign Up
-        </NavLink>
+        <p>
+            <NavLink exact to="/">Home</NavLink>
+            &emsp;
+            <NavLink exact to="/login">Log In</NavLink>
+            &emsp;
+            <NavLink exact to="/signup">Sign Up</NavLink>
+        </p>
     </nav>)
 )};
 

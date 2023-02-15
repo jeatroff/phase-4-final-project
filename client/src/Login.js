@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom'
 import Signup from './Signup'
 
 
-function Login({user, setUser}){
+function Login({setUser}){
 
     const [username, SetUsername] = useState("")
     const [password, SetPassword] = useState("")
@@ -21,7 +21,7 @@ function Login({user, setUser}){
 
     function onSubmit(e){
         e.preventDefault()
-        const user = {
+        const new_user = {
         username,
         password
     }
@@ -29,12 +29,12 @@ function Login({user, setUser}){
     fetch(`/login`,{
       method:'POST',
       headers:{'Content-Type': 'application/json'},
-      body:JSON.stringify(user)
+      body:JSON.stringify(new_user)
     })
     .then(res => {
         if(res.ok){
-            res.json().then(user => {
-                setUser(user)
+            res.json().then(new_user => {
+                setUser(new_user)
                 history.push("/")
             })
         }else {
@@ -50,19 +50,17 @@ function Login({user, setUser}){
     return(
         <div className="form">
             <h2>Log In</h2>
-        <form onSubmit={onSubmit}>
-        <input placeholder="Username"type='text' name='username' value={username} onChange={(e) => handleUsernameChange(e)} />
-      <div></div>
-        <input placeholder="Password" type='password' name='password' value={password} onChange={(e) => handlePasswordChange(e)} />
-       
-       <div></div>
-        <input type='submit' value='Log in!' />
-      </form>
-      <h3>
-        Don't have an account yet? Sign up!
-      </h3>
-      <Link exact to="/signup">Sign up now!</Link>
-         </div>
+            <form onSubmit={onSubmit}>
+                <input placeholder="Username"type='text' name='username' value={username} onChange={(e) => handleUsernameChange(e)} />
+                <div></div>
+                <input placeholder="Password" type='password' name='password' value={password} onChange={(e) => handlePasswordChange(e)} />
+        
+                <div></div>
+                <input type='submit' value='Log in!' />
+            </form>
+            <h3>Don't have an account yet? Sign up!</h3>
+            <Link exact to="/signup">Sign up now!</Link>
+    </div>
     )
 }
 

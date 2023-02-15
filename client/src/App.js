@@ -9,7 +9,6 @@ function App() {
   const [user, setUser] = useState(null);
 
   useEffect(() => {
-    // auto-login
     fetch("/me").then((r) => {
       if (r.ok) {
         r.json().then((user) => {
@@ -19,24 +18,14 @@ function App() {
     });
   }, []);
 
-  
-
   return (
     <BrowserRouter>
       <div className="App">
         <NavBar user={user} setUser={setUser}/>
         <Routes>
-          <Route exact path="/">
-            <Home/>
-          </Route>
-
-          <Route exact path="/login">
-              <Login setUser={setUser} user={user}/>
-          </Route>
-
-          <Route exact path="/signup">
-            <Signup setUser={setUser} user={user}/>
-          </Route>
+          <Route exact path="/" element={<Home />}/>
+          <Route exact path="/login" element={<Login setUser={setUser} user={user}/>}/>
+          <Route exact path="/signup" element={<Signup setUser={setUser} user={user}/>}/>
         </Routes>
       </div>
     </BrowserRouter>
