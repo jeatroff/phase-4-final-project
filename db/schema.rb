@@ -10,13 +10,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_02_13_234333) do
+ActiveRecord::Schema[7.0].define(version: 2023_02_15_020407) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "likes", force: :cascade do |t|
-    t.integer "user_id_1"
-    t.integer "user_id_2"
+    t.integer "user_1_id"
+    t.integer "user_2_id"
     t.boolean "is_match"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -44,6 +44,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_02_13_234333) do
     t.string "description"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "password_digest"
+    t.string "username"
   end
 
 end

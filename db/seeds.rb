@@ -32,22 +32,33 @@ User.create!([
     {
         name: "Sara",
         age: 19,
-        description: "Hi! Message me to learn more!"
+        description: "Hi! Message me to learn more!",
+        username: "asdk29",
+        password: "Password"
     },
     {
         name: "Ben",
         age: 20,
-        description: "not really sure what to put here :/"
+        description: "not really sure what to put here :/",
+        username: "ben22",
+        password: "Password"
+
     },
     {
         name: "Pat",
         age: 21,
-        description: "hey y'all"
+        description: "hey y'all",
+        username: "pat200",
+        password: "Password"
+
     },
     {
         name: "Kris",
         age: 20,
-        description: "Hi, profile still in progress."
+        description: "Hi, profile still in progress.",
+        username: "kris893",
+        password: "Password"
+
     },
 ])
 

@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+    skip_before_action :authorize, only: :create
     rescue_from ActiveRecord::RecordNotFound, with: :record_not_found
 
     def index
@@ -6,12 +7,12 @@ class UsersController < ApplicationController
     end
 
     def show
-        user = User.find(params[:id])
-        render json: user, status: :ok
+        render json: @current_user, status: :ok
     end
 
     def create
         user = User.create!(user_params)
+        session[:user_id] = user.id
         render json: user, status: :created
     rescue ActiveRecord::RecordInvalid => invalid
         render json: { errors: invalid.record.errors }, status: :unprocessable_entity      
@@ -32,7 +33,7 @@ class UsersController < ApplicationController
     private
 
     def user_params
-        params.permit(:name, :age, :description)
+        params.permit(:username, :password)
     end
 
     def record_not_found
