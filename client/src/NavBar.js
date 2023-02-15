@@ -26,6 +26,12 @@ function NavBar({ setUser, user }) {
         <p>
             <NavLink exact to="/">Home</NavLink>
             &emsp;
+            <NavLink exact to="/discover">Discover</NavLink>
+            &emsp;
+            <NavLink exact to="/matches">Matches</NavLink>
+            &emsp;
+            <NavLink exact to="/profile">Profile</NavLink>
+            &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
             <NavLink exact to="/login">Log In</NavLink>
             &emsp;
             <NavLink exact to="/signup">Sign Up</NavLink>

@@ -48,7 +48,7 @@ function Signup({user, setUser}) {
     return (
         <div className="loginForm"> 
             <form onSubmit={onSubmit}>
-                <h1>Create an Account</h1>
+                <h2>Create an Account</h2>
                 <input placeholder="Username" type='text' name='username' value={username} onChange={e => handleUsernameChange(e)} />
                 <div></div>
                 <input placeholder="Password" type='password' name='password' value={password} onChange={e => handlePasswordChange(e)} />
