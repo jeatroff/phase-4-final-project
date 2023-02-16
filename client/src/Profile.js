@@ -27,7 +27,7 @@ function Profile({ user, setUser }) {
 
     function onSubmit(e){
         e.preventDefault()
-        fetch(`http://localhost:3000/users/${user.id}`,{
+        fetch(`/users/${user.id}`,{
             method:'PATCH',
             headers: {'Content-Type': 'application/json'},
             body: JSON.stringify({
@@ -44,8 +44,8 @@ function Profile({ user, setUser }) {
     }
 
     function handleDeleteClick(){
-        fetch(`http://localhost:3000/users/${user.id}`, {
-            method: "Delete",
+        fetch(`/users/${user.id}`, {
+            method: "DELETE",
         })
         fetch("/logout", {
             method: "DELETE"

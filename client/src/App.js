@@ -24,7 +24,7 @@ function App() {
   return (
     <BrowserRouter>
       <div className="App">
-        <h1>Movie Matcher</h1>
+        <h1>Movie Collector</h1>
         <NavBar user={user} setUser={setUser}/>
         <Routes>
           <Route exact path="/" element={<Home user={user}/>}/>
