@@ -16,7 +16,7 @@ rescue_from ActiveRecord::RecordInvalid, with: :record_invalid
     private
 
     def user_movie_params
-        params.permit(:user_id, :movie_id)
+        params.permit(:id, :user_id, :movie_id)
     end
 
     def record_invalid

@@ -3,4 +3,8 @@ class UserSerializer < ActiveModel::Serializer
 
   has_many :movies
   #has_many :likes
+
+  def password
+    self.object.password_digest
+  end
 end

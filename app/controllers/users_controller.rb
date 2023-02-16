@@ -7,6 +7,11 @@ class UsersController < ApplicationController
     end
 
     def show
+        user = User.find(params[:id])
+        render json: user, status: :ok
+    end
+
+    def show_me
         render json: @current_user, status: :ok
     end
 
@@ -33,7 +38,7 @@ class UsersController < ApplicationController
     private
 
     def user_params
-        params.permit(:username, :password)
+        params.permit(:username, :password, :name, :age, :description)
     end
 
     def record_not_found
